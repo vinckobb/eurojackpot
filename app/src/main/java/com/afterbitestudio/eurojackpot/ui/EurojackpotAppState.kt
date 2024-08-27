@@ -11,7 +11,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import androidx.tracing.trace
+import com.afterbitestudio.eurojackpot.activeDraw.navigation.ACTIVE_DRAW_ROUTE
 import com.afterbitestudio.eurojackpot.activeDraw.navigation.navigateToActiveDraw
+import com.afterbitestudio.eurojackpot.drawHistory.navigation.DRAW_HISTORY_ROUTE
 import com.afterbitestudio.eurojackpot.drawHistory.navigation.navigateToDrawHistory
 import com.afterbitestudio.eurojackpot.navigation.TopLevelDestination
 import kotlinx.coroutines.CoroutineScope
@@ -38,6 +40,13 @@ class EurojackpotAppState(
     val currentDestination: NavDestination?
         @Composable get() = navController
             .currentBackStackEntryAsState().value?.destination
+
+    val currentTopLevelDestination: TopLevelDestination?
+        @Composable get() = when (currentDestination?.route) {
+            ACTIVE_DRAW_ROUTE -> TopLevelDestination.ACTIVE_DRAW
+            DRAW_HISTORY_ROUTE -> TopLevelDestination.DRAW_HISTORY
+            else -> null
+        }
 
     /**
      * Map of top level destinations to be used in the TopBar, BottomBar and NavRail. The key is the

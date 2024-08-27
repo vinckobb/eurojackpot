@@ -29,6 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.afterbitestudio.eurojackpot.R
+import com.afterbitestudio.eurojackpot.designsystem.component.EurojackpotTopAppBar
 import com.afterbitestudio.eurojackpot.navigation.EurojackpotNavHost
 import com.afterbitestudio.eurojackpot.navigation.TopLevelDestination
 
@@ -90,6 +91,14 @@ internal fun EurojackpotApp(
                         ),
                     )
             ) {
+                val destination = appState.currentTopLevelDestination
+
+                if (destination != null) {
+                    EurojackpotTopAppBar(
+                        titleRes = destination.titleTextId,
+                    )
+                }
+
                 Box(
                     // Workaround for https://issuetracker.google.com/338478720
                     modifier = Modifier.consumeWindowInsets(

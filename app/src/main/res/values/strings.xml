@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Eurojackpot</string>
+    <string name="active_title">Active</string>
+    <string name="active_draw_title">Active Draw</string>
+    <string name="history_title">History</string>
+    <string name="draw_history_title">Draw History</string>
+    <string name="statistics_title">Statistics</string>
+    <string name="profile_title">Profile</string>
 </resources>

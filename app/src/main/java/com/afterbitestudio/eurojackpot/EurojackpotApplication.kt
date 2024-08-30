@@ -3,6 +3,7 @@ package com.afterbitestudio.eurojackpot
 import android.app.Application
 import com.afterbitestudio.eurojackpot.data.di.resositoryModule
 import com.afterbitestudio.eurojackpot.database.di.databaseModule
+import com.afterbitestudio.eurojackpot.di.applicationModule
 import com.afterbitestudio.eurojackpot.di.viewModelModule
 import com.afterbitestudio.eurojackpot.domain.di.domainModule
 import org.koin.android.ext.koin.androidContext
@@ -15,6 +16,7 @@ class EurojackpotApplication: Application() {
         startKoin {
             androidContext(this@EurojackpotApplication)
             modules(
+                applicationModule,
                 resositoryModule,
                 viewModelModule,
                 domainModule,

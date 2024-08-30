@@ -3,6 +3,7 @@ package com.afterbitestudio.eurojackpot.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.afterbitestudio.eurojackpot.database.dao.DrawDao
 import com.afterbitestudio.eurojackpot.database.dao.UserDrawDao
 import com.afterbitestudio.eurojackpot.database.model.DrawEntity
 import com.afterbitestudio.eurojackpot.database.model.DrawNumberEntity
@@ -27,4 +28,5 @@ import com.afterbitestudio.eurojackpot.database.util.InstantConverter
 )
 internal abstract class EurojackpotDatabase: RoomDatabase() {
     abstract fun userDrawDao(): UserDrawDao
+    abstract fun drawDao(): DrawDao
 }

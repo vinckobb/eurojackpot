@@ -2,6 +2,7 @@ package com.afterbitestudio.eurojackpot.database.di
 
 import androidx.room.Room
 import com.afterbitestudio.eurojackpot.database.EurojackpotDatabase
+import com.afterbitestudio.eurojackpot.database.dao.DrawDao
 import com.afterbitestudio.eurojackpot.database.dao.UserDrawDao
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
@@ -16,6 +17,10 @@ val databaseModule = module {
 
     single<UserDrawDao> {
         getDatabase().userDrawDao()
+    }
+
+    single<DrawDao> {
+        getDatabase().drawDao()
     }
 }
 

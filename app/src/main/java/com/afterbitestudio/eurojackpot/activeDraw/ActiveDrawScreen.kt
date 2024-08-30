@@ -50,23 +50,24 @@ fun ActiveDrawScreen(
             ActiveDrawUiState.Loading ->
                 Text(text = "Loading")
             is ActiveDrawUiState.ActiveDraw -> {
-                val scrollableState = rememberLazyListState()
-                LazyColumn(
-                    modifier = Modifier
-                        .padding(
-                            horizontal = 24.dp
-                        ),
-                    contentPadding = PaddingValues(vertical = 16.dp),
-                    state = scrollableState,
-                ) {
-                    uiState.draws.forEach { draw ->
-                        item(key = draw.id) {
-                            Card {
-                                Text(text = draw.id)
-                            }
-                        }
-                    }
-                }
+                Text(text = uiState.activeUserDraw.id)
+//                val scrollableState = rememberLazyListState()
+//                LazyColumn(
+//                    modifier = Modifier
+//                        .padding(
+//                            horizontal = 24.dp
+//                        ),
+//                    contentPadding = PaddingValues(vertical = 16.dp),
+//                    state = scrollableState,
+//                ) {
+//                    uiState.draws.forEach { draw ->
+//                        item(key = draw.id) {
+//                            Card {
+//                                Text(text = draw.id)
+//                            }
+//                        }
+//                    }
+//                }
             }
             is ActiveDrawUiState.Empty ->
                 Text(text = "Empty")

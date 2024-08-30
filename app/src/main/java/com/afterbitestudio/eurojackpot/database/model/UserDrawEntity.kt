@@ -15,7 +15,7 @@ data class UserDrawEntity(
     @ColumnInfo(
         name = "draw_id"
     )
-    val drawId: String,
+    val drawId: String?,
     @ColumnInfo(
         name = "created_at"
     )

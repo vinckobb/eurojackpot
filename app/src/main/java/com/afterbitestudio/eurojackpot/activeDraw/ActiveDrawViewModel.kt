@@ -2,7 +2,7 @@ package com.afterbitestudio.eurojackpot.activeDraw
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.afterbitestudio.eurojackpot.domain.GetActiveDrawUseCase
+import com.afterbitestudio.eurojackpot.domain.GetOrCreateActiveUserDrawUseCase
 import com.afterbitestudio.eurojackpot.model.UserDraw
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -10,11 +10,16 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 class ActiveDrawViewModel(
-    getActiveDraw: GetActiveDrawUseCase
+    getOrCreateActiveUserDraw: GetOrCreateActiveUserDrawUseCase
 ): ViewModel() {
 
-    val uiState: StateFlow<ActiveDrawUiState> = getActiveDraw().map {
-        ActiveDrawUiState.ActiveDraw(it)
+    //TODO handle if active user draw is null/thrown error? Return uistate empty
+    val uiState: StateFlow<ActiveDrawUiState> = getOrCreateActiveUserDraw().map {
+        it?.let {
+            userDraw -> return@map ActiveDrawUiState.ActiveDraw(userDraw)
+        }
+
+        ActiveDrawUiState.Empty
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
@@ -34,7 +39,7 @@ sealed interface ActiveDrawUiState {
     data object Loading: ActiveDrawUiState
 
     data class ActiveDraw(
-        val draws: List<UserDraw>
+        val activeUserDraw: UserDraw
     ): ActiveDrawUiState
 
     data object Empty: ActiveDrawUiState

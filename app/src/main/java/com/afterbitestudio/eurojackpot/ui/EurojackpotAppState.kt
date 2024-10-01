@@ -16,6 +16,7 @@ import com.afterbitestudio.eurojackpot.activeDraw.navigation.navigateToActiveDra
 import com.afterbitestudio.eurojackpot.drawHistory.navigation.DRAW_HISTORY_ROUTE
 import com.afterbitestudio.eurojackpot.drawHistory.navigation.navigateToDrawHistory
 import com.afterbitestudio.eurojackpot.navigation.TopLevelDestination
+import com.afterbitestudio.eurojackpot.statistics.navigation.navigateToStatistics
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
@@ -80,6 +81,7 @@ class EurojackpotAppState(
             when (topLevelDestination) {
                 TopLevelDestination.ACTIVE_DRAW -> navController.navigateToActiveDraw(topLevelNavOptions)
                 TopLevelDestination.DRAW_HISTORY -> navController.navigateToDrawHistory(topLevelNavOptions)
+                TopLevelDestination.STATISTICS -> navController.navigateToStatistics(topLevelNavOptions)
             }
         }
     }

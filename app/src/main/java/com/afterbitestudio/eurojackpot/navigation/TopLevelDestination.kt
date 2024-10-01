@@ -22,12 +22,12 @@ enum class TopLevelDestination(
     iconTextId = R.string.history_title,
     titleTextId = R.string.draw_history_title,
     ),
-//    STATISTICS(
-//        selectedIcon = EurojackpotIcons.Statistics,
-//        unselectedIcon = EurojackpotIcons.Statistics,
-//        iconTextId = R.string.statistics_title,
-//        titleTextId = R.string.statistics_title,
-//    ),
+    STATISTICS(
+        selectedIcon = EurojackpotIcons.Statistics,
+        unselectedIcon = EurojackpotIcons.Statistics,
+        iconTextId = R.string.statistics_title,
+        titleTextId = R.string.statistics_title,
+    ),
 //    PROFILE(
 //        selectedIcon = EurojackpotIcons.Profile,
 //        unselectedIcon = EurojackpotIcons.Profile,

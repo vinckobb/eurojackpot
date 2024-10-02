@@ -1,4 +1,4 @@
-package com.afterbitestudio.eurojackpot.statistics.navigation
+package com.afterbitestudio.eurojackpot.settings.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -6,13 +6,13 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.afterbitestudio.eurojackpot.statistics.StatisticsRoute
 
-const val STATISTICS_ROUTE = "statistics_route"
+const val SETTINGS_ROUTE = "settings_route"
 
-fun NavController.navigateToStatistics(navOptions: NavOptions) = navigate(STATISTICS_ROUTE, navOptions)
+fun NavController.navigateToSettings(navOptions: NavOptions) = navigate(SETTINGS_ROUTE, navOptions)
 
-fun NavGraphBuilder.statisticsScreen() {
+fun NavGraphBuilder.settingsScreen() {
     composable(
-        route = STATISTICS_ROUTE,
+        route = SETTINGS_ROUTE,
     ) {
         StatisticsRoute({})
     }

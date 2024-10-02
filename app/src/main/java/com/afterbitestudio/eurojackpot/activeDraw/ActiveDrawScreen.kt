@@ -18,7 +18,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.afterbitestudio.eurojackpot.ActiveDrawRoute
+import com.afterbitestudio.eurojackpot.model.UserDraw
 import com.afterbitestudio.eurojackpot.ui.theme.EurojackpotTheme
+import kotlinx.datetime.Instant
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -85,12 +87,38 @@ fun ActiveDrawScreen(
 
 @Preview(showBackground = true)
 @Composable
-private fun ActiveDrawScreenPreview(modifier: Modifier = Modifier) {
+private fun ActiveDrawScreenLoadingPreview(modifier: Modifier = Modifier) {
     EurojackpotTheme {
         ActiveDrawScreen(
             uiState = ActiveDrawUiState.Loading,
             onAction = {}
         )
     }
+}
 
+@Preview(showBackground = true)
+@Composable
+private fun ActiveDrawScreenEmptyPreview(modifier: Modifier = Modifier) {
+    EurojackpotTheme {
+        ActiveDrawScreen(
+            uiState = ActiveDrawUiState.Empty,
+            onAction = {}
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ActiveDrawScreenPreview(modifier: Modifier = Modifier) {
+    EurojackpotTheme {
+        ActiveDrawScreen(
+            uiState = ActiveDrawUiState.ActiveDraw(
+                activeUserDraw = UserDraw(
+                    id = "1",
+                    createdAt = Instant.DISTANT_PAST
+                )
+            ),
+            onAction = {}
+        )
+    }
 }

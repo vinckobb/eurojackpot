@@ -26,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 
 private val NoWindowInsets = WindowInsets(0, 0, 0, 0)
 
@@ -171,7 +172,7 @@ fun EurojackpotNavigationSuite(
                 modifier = Modifier.weight(1f),
                 contentAlignment = Alignment.Center,
             ) {
-                Text(text = "Item")
+                it.label?.invoke()
             }
             if (floatingActionButton != null && index == scope.itemsCount-1 && scope.itemsCount % 2 == 1) {
                 Box(

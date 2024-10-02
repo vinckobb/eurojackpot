@@ -28,10 +28,10 @@ enum class TopLevelDestination(
         iconTextId = R.string.statistics_title,
         titleTextId = R.string.statistics_title,
     ),
-//    PROFILE(
-//        selectedIcon = EurojackpotIcons.Profile,
-//        unselectedIcon = EurojackpotIcons.Profile,
-//        iconTextId = R.string.profile_title,
-//        titleTextId = R.string.profile_title,
-//    )
+    SETTINGS(
+        selectedIcon = EurojackpotIcons.Settings,
+        unselectedIcon = EurojackpotIcons.Settings,
+        iconTextId = R.string.settings_title,
+        titleTextId = R.string.settings_title,
+    )
 }

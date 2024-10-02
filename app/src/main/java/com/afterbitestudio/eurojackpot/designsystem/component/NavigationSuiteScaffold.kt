@@ -168,11 +168,15 @@ fun EurojackpotNavigationSuite(
                     floatingActionButton()
                 }
             }
-            Box(
+            Surface(
                 modifier = Modifier.weight(1f),
-                contentAlignment = Alignment.Center,
+                onClick = it.onClick
             ) {
-                it.label?.invoke()
+                Box(
+                    contentAlignment = Alignment.Center,
+                ) {
+                    it.label?.invoke()
+                }
             }
             if (floatingActionButton != null && index == scope.itemsCount-1 && scope.itemsCount % 2 == 1) {
                 Box(

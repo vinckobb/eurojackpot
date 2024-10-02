@@ -6,6 +6,8 @@ import androidx.navigation.compose.NavHost
 import com.afterbitestudio.eurojackpot.activeDraw.navigation.ACTIVE_DRAW_ROUTE
 import com.afterbitestudio.eurojackpot.activeDraw.navigation.drawHistoryScreen
 import com.afterbitestudio.eurojackpot.drawHistory.navigation.activeDrawScreen
+import com.afterbitestudio.eurojackpot.settings.navigation.settingsScreen
+import com.afterbitestudio.eurojackpot.statistics.navigation.statisticsScreen
 import com.afterbitestudio.eurojackpot.ui.EurojackpotAppState
 
 @Composable
@@ -23,5 +25,7 @@ fun EurojackpotNavHost(
     ) {
         activeDrawScreen()
         drawHistoryScreen()
+        statisticsScreen()
+        settingsScreen()
     }
 }

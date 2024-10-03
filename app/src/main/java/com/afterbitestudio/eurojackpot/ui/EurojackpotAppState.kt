@@ -13,6 +13,7 @@ import androidx.navigation.navOptions
 import androidx.tracing.trace
 import com.afterbitestudio.eurojackpot.activeDraw.navigation.ACTIVE_DRAW_ROUTE
 import com.afterbitestudio.eurojackpot.activeDraw.navigation.navigateToActiveDraw
+import com.afterbitestudio.eurojackpot.drawEntry.navigation.navigateToAddDrawEntryType
 import com.afterbitestudio.eurojackpot.drawHistory.navigation.DRAW_HISTORY_ROUTE
 import com.afterbitestudio.eurojackpot.drawHistory.navigation.navigateToDrawHistory
 import com.afterbitestudio.eurojackpot.navigation.TopLevelDestination
@@ -90,5 +91,9 @@ class EurojackpotAppState(
                 TopLevelDestination.SETTINGS -> navController.navigateToSettings(topLevelNavOptions)
             }
         }
+    }
+
+    fun navigateToAddDrawEntry() {
+        navController.navigateToAddDrawEntryType()
     }
 }

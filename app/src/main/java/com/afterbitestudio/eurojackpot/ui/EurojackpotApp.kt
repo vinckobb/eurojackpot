@@ -19,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -74,13 +75,14 @@ internal fun EurojackpotApp(
                 )
             }
         },
+        showNavigationBar = appState.currentTopLevelDestination != null,
         floatingActionButton = {
             IconButton(
                 modifier = Modifier
                     .size(50.dp)
                     .clip(CircleShape)
                     .background(Color.Red),
-                onClick = { /*TODO*/ },
+                onClick = { appState.navigateToAddDrawEntry() },
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,

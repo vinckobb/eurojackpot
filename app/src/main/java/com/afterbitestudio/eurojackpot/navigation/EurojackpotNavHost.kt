@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.afterbitestudio.eurojackpot.activeDraw.navigation.ACTIVE_DRAW_ROUTE
 import com.afterbitestudio.eurojackpot.activeDraw.navigation.drawHistoryScreen
+import com.afterbitestudio.eurojackpot.drawEntry.navigation.addDrawEntryTypeScreen
 import com.afterbitestudio.eurojackpot.drawHistory.navigation.activeDrawScreen
 import com.afterbitestudio.eurojackpot.settings.navigation.settingsScreen
 import com.afterbitestudio.eurojackpot.statistics.navigation.statisticsScreen
@@ -27,5 +28,6 @@ fun EurojackpotNavHost(
         drawHistoryScreen()
         statisticsScreen()
         settingsScreen()
+        addDrawEntryTypeScreen()
     }
 }

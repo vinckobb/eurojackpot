@@ -110,10 +110,11 @@ fun EurojackpotNavigationSuiteScaffold(
     navigationSuiteItems: NavigationSuiteScope.() -> Unit,
     modifier: Modifier = Modifier,
     floatingActionButton: @Composable (() -> Unit)? = null,
-    layoutType: NavigationSuiteType =
-        NavigationSuiteScaffoldDefaults.calculateFromAdaptiveInfo(WindowAdaptiveInfoDefault),
+    showNavigationBar: Boolean = true,
     content: @Composable () -> Unit = {},
 ) {
+    val layoutType = if (showNavigationBar) NavigationSuiteScaffoldDefaults.calculateFromAdaptiveInfo(WindowAdaptiveInfoDefault) else NavigationSuiteType.None
+
     Surface(
         modifier = modifier
     ) {
@@ -121,6 +122,7 @@ fun EurojackpotNavigationSuiteScaffold(
             navigationSuite = {
                 EurojackpotNavigationSuite(
                     floatingActionButton = floatingActionButton,
+                    layoutType = layoutType,
                     content = navigationSuiteItems,
                 )
             },
@@ -156,34 +158,41 @@ fun EurojackpotNavigationSuite(
 ) {
     val scope by rememberStateOfItems(content)
 
-    EurojackpotNavigationBar(
-        modifier = modifier,
-    ) {
-        scope.itemList.forEachIndexed { index, it ->
-            if (floatingActionButton != null && index == scope.middleIndex) {
-                Box(
-                    modifier = Modifier.weight(1f),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    floatingActionButton()
-                }
-            }
-            Surface(
-                modifier = Modifier.weight(1f),
-                onClick = it.onClick
+    when (layoutType) {
+        NavigationSuiteType.NavigationBar -> {
+            EurojackpotNavigationBar(
+                modifier = modifier,
             ) {
-                Box(
-                    contentAlignment = Alignment.Center,
-                ) {
-                    it.label?.invoke()
+                scope.itemList.forEachIndexed { index, it ->
+                    if (floatingActionButton != null && index == scope.middleIndex) {
+                        Box(
+                            modifier = Modifier.weight(1f),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            floatingActionButton()
+                        }
+                    }
+                    Surface(
+                        modifier = Modifier.weight(1f),
+                        onClick = it.onClick
+                    ) {
+                        Box(
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            it.label?.invoke()
+                        }
+                    }
+                    if (floatingActionButton != null && index == scope.itemsCount-1 && scope.itemsCount % 2 == 1) {
+                        Box(
+                            modifier = Modifier.weight(1f),
+                            contentAlignment = Alignment.Center,
+                        ) {}
+                    }
                 }
             }
-            if (floatingActionButton != null && index == scope.itemsCount-1 && scope.itemsCount % 2 == 1) {
-                Box(
-                    modifier = Modifier.weight(1f),
-                    contentAlignment = Alignment.Center,
-                ) {}
-            }
+        }
+        NavigationSuiteType.None -> {
+            /* Do nothing. */
         }
     }
 }
